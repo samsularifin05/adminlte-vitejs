@@ -1,9 +1,16 @@
 // import { useDispatch, useSelector } from 'react-redux'
 
-import { Link } from 'react-router-dom';
-import { Card, PanelContent } from '../../components/helpers';
+import { Link } from "react-router-dom";
+import { Card,  PanelContent } from "../../components/helpers";
 
-const Dashboard  = function () {
+const Dashboard = function () {
+
+  // useEffect(() => {
+  //   if (getItem("userdata").token === undefined) {
+  //     history.push("/");
+  //   }
+  // }, []);
+
   return (
     <PanelContent headerContent title="Dashboard">
       <div className="row">
@@ -25,7 +32,7 @@ const Dashboard  = function () {
           <div className="small-box bg-success">
             <div className="inner">
               <h3>
-                53<sup style={{ fontSize: '20px' }}>%</sup>
+                53<sup style={{ fontSize: "20px" }}>%</sup>
               </h3>
               <p>Bounce Rate</p>
             </div>

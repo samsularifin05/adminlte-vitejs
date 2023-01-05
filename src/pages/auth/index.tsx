@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { withRouter } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
@@ -10,9 +10,9 @@ import {
   postData,
   NotifEror,
   setItem,
+  getItem
 } from "../../components";
 import { isLoading, themesSetting } from "../../recoil";
-
 interface Props {
   history: any;
 }
@@ -21,18 +21,22 @@ const Login: React.FC<Props> = (props) => {
   const setLoading = useSetRecoilState(isLoading);
 
   useEffect(() => {
+    // console.log(getItem("userdata").token)
+    if (getItem("userdata").token) {
+      props.history.push("/dashboard");
+    }
     setTheme({
       header: false,
       sidebar: false,
       footer: false,
-      content: true,
+      content: true
     });
     return () => {
       setTheme({
         header: true,
         sidebar: true,
         footer: true,
-        content: true,
+        content: true
       });
     };
   }, [setTheme]);
@@ -42,26 +46,20 @@ const Login: React.FC<Props> = (props) => {
     handleSubmit,
     // setValue,
     // disabled,
-    formState: { errors,isSubmitting, isDirty, isValid  },
+    formState: { errors, isDirty, isValid }
   } = useForm();
   const onSubmit = async (data: any) => {
     setLoading({ content: true, button: true });
-    try {
-      let result: any = await postData("login", data);
-      setItem("userdata", result?.data);
+    setTimeout(() => {
+      setItem("userdata", {
+        token: "120312"
+      });
       setLoading({ content: false, button: false });
       props.history.push("/dashboard");
-    } catch (error: any) {
-      console.log(error);
-      NotifEror(error.message || error);
-      setLoading({ content: false, button: false });
-    }
+    }, 300);
   };
 
-  // const hitung = (e:any) => {
-  //   // console.log(e)
-  //   setValue('password',e + 'sam')
-  // }
+  const [password, setPassword] = useState(true);
   return (
     <div className="login-box container" style={{ marginTop: "10%" }}>
       <div className="card card-outline card-primary">
@@ -78,7 +76,7 @@ const Login: React.FC<Props> = (props) => {
               label="Username"
               type="text"
               {...register("username", {
-                required: "Email Tidak Boleh Kosong",
+                required: "Username Tidak Boleh Kosong"
                 // onChange: (e) => hitung(e.target.value)
               })}
               iconFormGroup="fas fa-envelope"
@@ -89,20 +87,22 @@ const Login: React.FC<Props> = (props) => {
             <InputField
               label="Password"
               {...register("password", {
-                required: "Password Tidak Boleh Kosong",
+                required: "Password Tidak Boleh Kosong"
               })}
               name="password"
               type="text"
-              customeCss="password-hide-css"
+              // <i class="fa-solid fa-eye-slash"></i>
               placeholder="Silahkan Masukan Passwsord"
-              iconFormGroup="fas fa-lock"
+              iconFormGroup={password ? "fas fa-eye-slash" : "fas fa-eye"}
+              customeCss={password ? "password-hide-css" : ""}
+              btnAction={() => setPassword(!password)}
               formGroup
               errors={errors?.password}
             />
             <Row>
               <Col size="12">
                 <Button
-                disabled={!isDirty || !isValid}
+                  disabled={!isDirty || !isValid}
                   loading
                   textLoading="Waiting"
                   type="submit"

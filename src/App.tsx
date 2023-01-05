@@ -1,5 +1,4 @@
 import { Suspense, useEffect } from "react";
-import Skeleton from "react-loading-skeleton";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import {
   Content,
@@ -9,6 +8,11 @@ import {
   LoadingContent,
   Sidebar,
   Toast,
+  addWindowClass,
+  calculateWindowSize,
+  LoadingApp,
+  removeWindowClass,
+  useWindowSize,
 } from "./components";
 import {
   isLoading,
@@ -19,12 +23,6 @@ import {
 import { Redirect } from "react-router-dom";
 import "./assets/css/index.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import {
-  addWindowClass,
-  calculateWindowSize,
-  removeWindowClass,
-  useWindowSize,
-} from "./components/helpers/function";
 
 function App() {
   const theme = useRecoilValue(themesSetting);
@@ -40,13 +38,14 @@ function App() {
     });
   };
 
-  // console.log(sidebar)
   const windowSize = useWindowSize();
 
   useEffect(() => {
     removeWindowClass("sidebar-closed");
     removeWindowClass("sidebar-collapse");
     removeWindowClass("sidebar-open");
+    
+
     const size = calculateWindowSize(windowSize.width);
     if (screen.screenSize !== size) {
       setSizeValue({ screenSize: size });
@@ -61,9 +60,10 @@ function App() {
       addWindowClass("sidebar-collapse");
     }
   }, [windowSize, sidebar]);
-
+// console.log(import.meta.env.VITE_RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED)
+// console.log(getItem("userdata").token)
   return (
-    <Suspense fallback={<Skeleton width="100%" height={1000} />}>
+    <Suspense fallback={<LoadingApp />}>
       {getItem("userdata").token ? (
         <>
           {theme.header && <Header />}
@@ -73,8 +73,8 @@ function App() {
         </>
       ) : (
         <>
-          {theme.content && <Content />}
           {localStorage.clear()}
+          {theme.content && <Content />}
           <Redirect to="/" />
         </>
       )}
@@ -86,6 +86,7 @@ function App() {
         onClick={handleToggleMenuSidebar}
         onKeyDown={() => {}}
       />
+
     </Suspense>
   );
 }

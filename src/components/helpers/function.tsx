@@ -1,5 +1,6 @@
 import { doDecrypt, doEncrypt } from "./encrypt";
 import {useState, useEffect} from 'react';
+import { Logo } from "../../assets";
 
 // export const getItem = (nama : string) => {
 //     return localStorage.getItem(doEncrypt(nama)) === null
@@ -55,6 +56,19 @@ export const calculateWindowSize = (windowWidth: number) => {
 };
 
 
+export const LoadingApp = () =>{
+  return (
+    <div className="preloader flex-column justify-content-center align-items-center">
+        <img
+          className="animation__shake"
+          src={Logo}
+          alt="AdminLTELogo"
+          height="60"
+          width="60"
+        />
+      </div>
+  )
+}
 
 export const useWindowSize = () => {
   const [windowSize, setWindowSize] = useState({

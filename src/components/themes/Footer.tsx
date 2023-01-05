@@ -9,7 +9,7 @@ function Footer() {
         <b>Version</b> 0.1
       </div>
       <strong>
-        Copyright &copy; {year} <Link to="#">Wala Tech</Link>.
+        Copyright &copy; {year} <Link to="#">PAS APP</Link>.
       </strong>{' '}
       All rights reserved.
     </footer>

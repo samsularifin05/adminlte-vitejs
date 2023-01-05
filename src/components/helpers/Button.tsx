@@ -8,7 +8,7 @@ interface props {
   block?: boolean;
   textLoading?: string;
   onClick?: any;
-  title: string;
+  title?: string;
   icon?: string;
   disabled ?: boolean
 }

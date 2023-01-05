@@ -14498,10 +14498,10 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
   right: 0.5rem;
 }
 
-.sidebar-hidden .main-sidebar,
+/* .sidebar-hidden .main-sidebar,
 .sidebar-hidden.sidebar-mini.sidebar-collapse .main-sidebar {
   display: none !important;
-}
+} */
 
 .sidebar-hidden .content-wrapper,
 .sidebar-hidden .main-header,
