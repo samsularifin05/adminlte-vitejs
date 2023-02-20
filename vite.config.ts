@@ -91,7 +91,7 @@ export default defineConfig(({ command, mode }) => {
     build: {
       emptyOutDir: true,
       outDir: "build",
-      sourcemap: process.env.SOURCE_MAP === "true",
+      sourcemap: true,
       chunkSizeWarningLimit: 1600,
       rollupOptions: {
         output: {
