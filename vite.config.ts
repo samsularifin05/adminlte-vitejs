@@ -66,7 +66,6 @@ if (reload) {
 }
 
 if (selfDestroying) pwaOptions.selfDestroying = selfDestroying;
-
 export default defineConfig(({ command, mode }) => {
   return {
     plugins: [

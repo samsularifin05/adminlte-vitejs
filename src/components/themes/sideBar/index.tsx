@@ -1,12 +1,11 @@
-import { Link, Route } from 'react-router-dom';
+import { Link, Route } from "react-router-dom";
 // import { useRecoilState } from 'recoil';
 // import { toggleSidebarMenu } from '../../../recoil';
-import menuApps from './menu';
-import SidebarNavList from './SidebarNavList';
+import menuApps from "./menu";
+import SidebarNavList from "./SidebarNavList";
 // import SidebarNavList from './SidebarNavList';
 
 function Sidebar() {
-
   return (
     <aside className="main-sidebar sidebar-dark-primary elevation-4">
       <Link to="/dashboard" className="brand-link text-center">
@@ -17,16 +16,18 @@ function Sidebar() {
           <ul
             className="nav nav-pills nav-sidebar flex-column"
             data-widget="treeview"
-            role="menu"
             data-accordion="false"
           >
             {menuApps.map((menu, index) => (
-              <Route path={menu.path} key={index} children={() => <SidebarNavList data={menu} key={index} />} />
+              <Route
+                path={menu.path}
+                key={index}
+                children={() => <SidebarNavList data={menu} key={index} />}
+              />
             ))}
           </ul>
         </nav>
       </div>
-
     </aside>
   );
 }

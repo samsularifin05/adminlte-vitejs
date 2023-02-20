@@ -1,8 +1,8 @@
-import PageNotFound from './404';
+import { lazy } from "react";
 // import { Dashboard } from './dashboard';
-import Login from './auth';
-import Dashboard from './dashboard';
-import { DataUsers } from './DataMaster';
+const PageNotFound = lazy(() => import("./404"));
+const Login = lazy(() => import("./auth"));
+const Dashboard = lazy(() => import("./dashboard"));
+import { DataUsers } from "./DataMaster";
 
-
-export { Dashboard,DataUsers, PageNotFound, Login };
+export { Dashboard, DataUsers, PageNotFound, Login };

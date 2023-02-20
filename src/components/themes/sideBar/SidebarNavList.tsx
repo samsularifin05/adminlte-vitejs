@@ -12,8 +12,6 @@ interface props {
   navheader?: any;
 }
 const SidebarNavList: React.FC<props> = (props) => {
-
-
   const icon = props.data.icon && <i className={props.data.icon} />;
   const titlesub = props.data.title && (
     <p>
