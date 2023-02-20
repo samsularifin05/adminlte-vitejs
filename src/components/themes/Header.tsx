@@ -5,12 +5,13 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { getItem } from "../helpers";
 
 function Header() {
-
   const setLoading = useSetRecoilState(isLoading);
-  const [valueHideSidebar,setHideSidebar] = useRecoilState(toggleSidebarMenu);
+  const [valueHideSidebar, setHideSidebar] = useRecoilState(toggleSidebarMenu);
 
   const handleToggleMenuSidebar = () => {
-    setHideSidebar({menuSidebarCollapsed : !valueHideSidebar.menuSidebarCollapsed});
+    setHideSidebar({
+      menuSidebarCollapsed: !valueHideSidebar.menuSidebarCollapsed
+    });
   };
   const logout = () => {
     setLoading({ content: true, button: true });
@@ -31,6 +32,7 @@ function Header() {
             className="nav-link"
             onClick={handleToggleMenuSidebar}
             data-widget="pushmenu"
+            aria-label="Menu Hide Bar"
             role="button"
           >
             <i className="fas fa-bars" />

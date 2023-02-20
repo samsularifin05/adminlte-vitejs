@@ -7,6 +7,11 @@ const pwaOptions: Partial<VitePWAOptions> = {
   mode: "development",
   base: "/",
   includeAssets: ["favicon.svg"],
+  workbox: {
+    clientsClaim: false,
+    skipWaiting: true,
+    navigateFallbackDenylist: [/^\/backoffice/]
+  },
   manifest: {
     name: "Admin Lte",
     short_name: "Admin Lte",
