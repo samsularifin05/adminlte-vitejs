@@ -1,5 +1,5 @@
 import react from "@vitejs/plugin-react-swc";
-import { defineConfig } from "vite";
+import { defineConfig, splitVendorChunkPlugin } from "vite";
 import { ManifestOptions, VitePWA, VitePWAOptions } from "vite-plugin-pwa";
 import svgrPlugin from "vite-plugin-svgr";
 import htmlMinifier from "vite-plugin-html-minifier";
@@ -72,6 +72,7 @@ export default defineConfig(({ command, mode }) => {
     plugins: [
       react(),
       VitePWA(pwaOptions),
+      splitVendorChunkPlugin(),
       htmlMinifier({
         minify: true
       }),
@@ -91,7 +92,7 @@ export default defineConfig(({ command, mode }) => {
     build: {
       emptyOutDir: true,
       outDir: "build",
-      sourcemap: true,
+      sourcemap: false,
       chunkSizeWarningLimit: 1600,
       rollupOptions: {
         output: {
