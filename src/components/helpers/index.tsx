@@ -1,7 +1,4 @@
 import { lazy } from "react";
-import Button from "./Button";
-import Card from "./Card";
-import Col from "./Col";
 import InputField from "./Filed";
 import {
   addWindowClass,
@@ -13,10 +10,14 @@ import {
   setItem,
   useWindowSize
 } from "./function";
-import HeaderContent from "./HeaderContent";
 import ModalGlobal from "./ModalGlobal";
-import Row from "./Row";
-import TabelMaster from "./TabelMaster";
+
+const Button = lazy(() => import("./Button"));
+const Card = lazy(() => import("./Card"));
+const Col = lazy(() => import("./Col"));
+const Row = lazy(() => import("./Row"));
+const HeaderContent = lazy(() => import("./HeaderContent"));
+const TabelMaster = lazy(() => import("./TabelMaster"));
 const PanelContent = lazy(() => import("./PanelContent"));
 import {
   Toast,
