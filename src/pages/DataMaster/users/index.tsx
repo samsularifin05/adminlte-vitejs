@@ -3,6 +3,7 @@ import FormDataUser from "./form";
 import TabelUser from "./tabel";
 
 const DataUsers = () => {
+  //PWA only
   const handleOnSubmit = async () => {
     const response = await fetch(
       "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/800px-Image_created_with_a_mobile_phone.png"
@@ -10,13 +11,9 @@ const DataUsers = () => {
     // here image is url/location of image
     const blob = await response.blob();
     const file = new File([blob], "share.jpg", { type: blob.type });
-    console.log(navigator.share);
     if (navigator.share) {
       await navigator
         .share({
-          title: "title",
-          text: "your text",
-          url: "https://web.whatsapp.com/",
           files: [file]
         })
         .then(() => console.log("Successful share"))
@@ -33,7 +30,7 @@ const DataUsers = () => {
       headerContent
     >
       <Card title="Data Users">
-        <button onClick={() => handleOnSubmit()}> klik </button>
+        {/* <button onClick={() => handleOnSubmit()}> klik </button> */}
         <TabelUser />
       </Card>
 
