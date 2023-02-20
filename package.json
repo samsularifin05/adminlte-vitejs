@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "start": "yarn run dev --host",
-    "dev": "rimraf dev-dist && cross-env DEBUG=vite-plugin-pwa:* SW_DEV=true vite --force",
+    "dev": "rimraf dev-dist && cross-env GENERATE_SOURCEMAP=false DEBUG=vite-plugin-pwa:* SW_DEV=true vite --force",
     "build": "tsc && cross-env DEBUG=vite-plugin-pwa:* SW_DEV=false BASE_URL=/ SOURCE_MAP=true vite build",
     "run-build-reloadsw-claims": "cross-env DEBUG=vite-plugin-pwa:* BASE_URL=/ SOURCE_MAP=true CLAIMS=true RELOAD_SW=true vite build",
     "preview": "vite preview",
