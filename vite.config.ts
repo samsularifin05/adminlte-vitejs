@@ -95,19 +95,19 @@ export default defineConfig(({ command, mode }) => {
       chunkSizeWarningLimit: 1600,
       rollupOptions: {
         output: {
-          chunkFileNames: "assets/js/[name]-[hash].js",
-          entryFileNames: "assets/js/[name]-[hash].js",
+          chunkFileNames: "assets/js/[hash].js",
+          entryFileNames: "assets/js/[hash].js",
           assetFileNames: ({ name }) => {
             if (/\.(gif|jpe?g|png|svg)$/.test(name ?? "")) {
-              return "assets/images/[name]-[hash][extname]";
+              return "assets/images/[hash][extname]";
             }
             if (/\.(ttf|woff2|svg)$/.test(name ?? "")) {
-              return "assets/font/[name]-[hash][extname]";
+              return "assets/font/[hash][extname]";
             }
             if (/\.css$/.test(name ?? "")) {
-              return "assets/css/[name]-[hash][extname]";
+              return "assets/css/[hash][extname]";
             }
-            return "assets/[name]-[hash][extname]";
+            return "assets/[hash][extname]";
           }
         }
       }
