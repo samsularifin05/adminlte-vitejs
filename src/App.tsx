@@ -12,13 +12,13 @@ import {
   calculateWindowSize,
   LoadingApp,
   removeWindowClass,
-  useWindowSize,
+  useWindowSize
 } from "./components";
 import {
   isLoading,
   screenSize,
   themesSetting,
-  toggleSidebarMenu,
+  toggleSidebarMenu
 } from "./recoil";
 import { Redirect } from "react-router-dom";
 import "./assets/css/index.css";
@@ -34,7 +34,7 @@ function App() {
 
   const handleToggleMenuSidebar = () => {
     setHideSidebar({
-      menuSidebarCollapsed: !valueHideSidebar.menuSidebarCollapsed,
+      menuSidebarCollapsed: !valueHideSidebar.menuSidebarCollapsed
     });
   };
 
@@ -44,7 +44,6 @@ function App() {
     removeWindowClass("sidebar-closed");
     removeWindowClass("sidebar-collapse");
     removeWindowClass("sidebar-open");
-    
 
     const size = calculateWindowSize(windowSize.width);
     if (screen.screenSize !== size) {
@@ -60,8 +59,7 @@ function App() {
       addWindowClass("sidebar-collapse");
     }
   }, [windowSize, sidebar]);
-// console.log(import.meta.env.VITE_RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED)
-// console.log(getItem("userdata").token)
+
   return (
     <Suspense fallback={<LoadingApp />}>
       {getItem("userdata").token ? (
@@ -86,7 +84,6 @@ function App() {
         onClick={handleToggleMenuSidebar}
         onKeyDown={() => {}}
       />
-
     </Suspense>
   );
 }
