@@ -7,6 +7,8 @@ const DataUsers = () => {
     // Check if navigator.share is supported by the browser
     if (navigator.share) {
       console.log("Congrats! Your browser supports Web Share API");
+      alert("Congrats! Your browser supports Web Share API");
+
       navigator
         .share({
           url: `https://share.toogoodtogo.com/store/1006/milestones/meals-saved/`
