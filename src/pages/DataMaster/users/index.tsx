@@ -3,28 +3,26 @@ import FormDataUser from "./form";
 import TabelUser from "./tabel";
 
 const DataUsers = () => {
-  const handleShareButton = () => {
-    // Check if navigator.share is supported by the browser
+  const handleOnSubmit = async () => {
+    const response = await fetch(
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/800px-Image_created_with_a_mobile_phone.png"
+    );
+    // here image is url/location of image
+    const blob = await response.blob();
+    const file = new File([blob], "share.jpg", { type: blob.type });
+    console.log(navigator.share);
     if (navigator.share) {
-      console.log("Congrats! Your browser supports Web Share API");
-      alert("Congrats! Your browser supports Web Share API");
-
-      navigator
+      await navigator
         .share({
-          url: `https://share.toogoodtogo.com/store/1006/milestones/meals-saved/`
+          title: "title",
+          text: "your text",
+          url: "https://web.whatsapp.com/",
+          files: [file]
         })
-        .then(() => {
-          // console.log("Sharing successfull");
-          alert("Sharing successfull");
-        })
-        .catch(() => {
-          // console.log("Sharing failed");
-          alert("Sharing failed");
-        });
+        .then(() => console.log("Successful share"))
+        .catch((error) => console.log("Error in sharing", error));
     } else {
-      alert("Sorry! Your browser does not support Web Share API");
-
-      console.log("Sorry! Your browser does not support Web Share API");
+      console.log(`system does not support sharing files.`);
     }
   };
   return (
@@ -35,7 +33,7 @@ const DataUsers = () => {
       headerContent
     >
       <Card title="Data Users">
-        <button onClick={() => handleShareButton()}> kli2k </button>
+        <button onClick={() => handleOnSubmit()}> klik </button>
         <TabelUser />
       </Card>
 
