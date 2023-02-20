@@ -88,5 +88,6 @@ define(['./workbox-6e567876'], (function (workbox) { 'use strict';
     allowlist: [/^\/$/],
     denylist: [/^\/backoffice/]
   }));
+  self.__WB_DISABLE_DEV_LOGS = true;
 
 }));

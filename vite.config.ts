@@ -10,7 +10,8 @@ const pwaOptions: Partial<VitePWAOptions> = {
   workbox: {
     clientsClaim: false,
     skipWaiting: true,
-    navigateFallbackDenylist: [/^\/backoffice/]
+    navigateFallbackDenylist: [/^\/backoffice/],
+    disableDevLogs: true
   },
   manifest: {
     name: "Admin Lte",
