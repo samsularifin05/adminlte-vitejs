@@ -3,7 +3,7 @@ import {
   selector,
   useRecoilState,
   useResetRecoilState,
-  useSetRecoilState,
+  useSetRecoilState
 } from "recoil";
 import { isLoading, modalShow } from "../../../recoil/utility";
 import {
@@ -11,23 +11,24 @@ import {
   getData,
   NotifEror,
   NotifSuccess,
-  postData,
+  postData
 } from "../../../components";
 import { M_DataUser } from "./model";
 
 export const DataUserState = atom({
   key: "DataUser",
-  default: selector({
-    key: "DataUserLoader",
-    get: async () => {
-      try {
-        let response: any = await getData("users");
-        return response.data;
-      } catch (error) {
-        return [];
-      }
-    },
-  }),
+  // default: selector({
+  //   key: "DataUserLoader",
+  //   get: async () => {
+  //     try {
+  //       let response: any = await getData("users");
+  //       return response.data;
+  //     } catch (error) {
+  //       return [];
+  //     }
+  //   },
+  // }),
+  default: []
 });
 
 export const dataUserStore = () => {
@@ -41,12 +42,12 @@ export const dataUserStore = () => {
     try {
       setLoading({ content: true });
       const response: any = await postData("users", newData);
-      setDataUser([...datauser, response]);
+      // setDataUser([...datauser, response]);
       NotifSuccess("Data Berhasil Disimpan");
       hideModal();
       hideLoading();
     } catch (error: any) {
-      console.log(error)
+      console.log(error);
       hideLoading();
       NotifEror(error?.message || "Data Gagal Disimpan");
     }
@@ -56,7 +57,7 @@ export const dataUserStore = () => {
     setModal({
       isModalShow: true,
       isEdit: true,
-      data: newData,
+      data: newData
     });
   };
 

@@ -62,20 +62,23 @@ function App() {
 
   return (
     <Suspense fallback={<LoadingApp />}>
-      {getItem("userdata").token ? (
-        <>
-          {theme.header && <Header />}
-          {theme.sidebar && <Sidebar />}
-          {theme.content && <Content />}
-          {theme.footer && <Footer />}
-        </>
-      ) : (
-        <>
-          {localStorage.clear()}
-          {theme.content && <Content />}
-          <Redirect to="/" />
-        </>
-      )}
+      <div className="wrapper">
+        {getItem("userdata").token ? (
+          <>
+            {theme.header && <Header />}
+            {theme.sidebar && <Sidebar />}
+            {theme.content && <Content />}
+            {theme.footer && <Footer />}
+          </>
+        ) : (
+          <>
+            {localStorage.clear()}
+            {theme.content && <Content />}
+            <Redirect to="/" />
+          </>
+        )}
+      </div>
+
       <LoadingContent loading={loading.content || false} />
       <Toast />
       <div
