@@ -3,6 +3,11 @@ import { defineConfig, splitVendorChunkPlugin } from "vite";
 import { ManifestOptions, VitePWA, VitePWAOptions } from "vite-plugin-pwa";
 import svgrPlugin from "vite-plugin-svgr";
 import htmlMinifier from "vite-plugin-html-minifier";
+import viteCompression from "vite-plugin-compression";
+import path from "path";
+function isExternal(id: string) {
+  return !id.startsWith(".") && !path.isAbsolute(id) && !id.startsWith("~/");
+}
 const pwaOptions: Partial<VitePWAOptions> = {
   mode: "development",
   base: "/",
@@ -79,21 +84,17 @@ export default defineConfig(({ command, mode }) => {
         svgrOptions: {
           icon: true
         }
-      })
+      }),
+      viteCompression()
     ],
-    resolve: {
-      alias: [
-        { find: "@/", replacement: "/src" },
-        { find: "@/Assets", replacement: "/src/assets" },
-        { find: "@/Components", replacement: "/src/components" }
-      ]
-    },
     build: {
       emptyOutDir: true,
       outDir: "build",
       sourcemap: false,
+      minify: true,
       chunkSizeWarningLimit: 1600,
       rollupOptions: {
+        external: isExternal,
         output: {
           chunkFileNames: "assets/js/[hash].js",
           entryFileNames: "assets/js/[hash].js",
