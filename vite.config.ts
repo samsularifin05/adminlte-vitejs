@@ -5,15 +5,36 @@ import svgrPlugin from "vite-plugin-svgr";
 import htmlMinifier from "vite-plugin-html-minifier";
 import viteCompression from "vite-plugin-compression";
 
+const getCache = ({ name, pattern }: any) => ({
+  urlPattern: pattern,
+  handler: "CacheFirst" as const,
+  options: {
+    cacheName: name,
+    expiration: {
+      maxEntries: 500,
+      maxAgeSeconds: 60 * 60 * 24 * 365 * 2 // 2 years
+    },
+    cacheableResponse: {
+      statuses: [200]
+    }
+  }
+});
 const pwaOptions: Partial<VitePWAOptions> = {
-  mode: "development",
+  mode: "production",
   base: "/",
   includeAssets: ["favicon.svg"],
+  registerType: "autoUpdate",
   workbox: {
     clientsClaim: false,
     skipWaiting: true,
     navigateFallbackDenylist: [/^\/backoffice/],
-    disableDevLogs: true
+    disableDevLogs: true,
+    runtimeCaching: [
+      getCache({
+        pattern: /^https:\/\/adminlte-vite-js.netlify.app\/assets/,
+        name: "local-images1"
+      })
+    ]
   },
   manifest: {
     name: "Admin Lte",
@@ -38,6 +59,7 @@ const pwaOptions: Partial<VitePWAOptions> = {
       }
     ]
   },
+
   devOptions: {
     enabled: process.env.SW_DEV === "true",
     /* when using generateSW the PWA plugin will switch to classic */

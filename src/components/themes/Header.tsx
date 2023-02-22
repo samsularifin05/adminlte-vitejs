@@ -64,7 +64,7 @@ function Header() {
                 onClick={() => logout()}
               >
                 <i className="nav-icon fas fa-arrow-right-from-bracket"></i>{" "}
-                Logout
+                Logout kau
               </button>
             </div>
           </div>
