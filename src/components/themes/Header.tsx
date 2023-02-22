@@ -46,7 +46,7 @@ function Header() {
             <Link to="#" className="nav-link dropdown-toggle user-action">
               <img
                 src="https://www.tutorialrepublic.com/examples/images/avatar/2.jpg"
-                className="avatar"
+                className="avatarProfile"
                 alt="Avatar"
               />{" "}
               {getItem("userdata").nama_lengkap} <b className="caret"></b>
