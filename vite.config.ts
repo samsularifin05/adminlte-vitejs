@@ -33,6 +33,10 @@ const pwaOptions: Partial<VitePWAOptions> = {
       getCache({
         pattern: /^https:\/\/adminlte-vite-js.netlify.app\/assets/,
         name: "local-images1"
+      }),
+      getCache({
+        pattern: /^https:\/\/adminlte-vite-js.netlify.app\/assets\/css/,
+        name: "local-css"
       })
     ]
   },
