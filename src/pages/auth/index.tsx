@@ -7,8 +7,6 @@ import {
   Row,
   Button,
   InputField,
-  postData,
-  NotifEror,
   setItem,
   getItem
 } from "../../components";
@@ -21,7 +19,6 @@ const Login: React.FC<Props> = (props) => {
   const setLoading = useSetRecoilState(isLoading);
 
   useEffect(() => {
-    // console.log(getItem("userdata").token)
     if (getItem("userdata").token) {
       props.history.push("/dashboard");
     }
@@ -71,7 +68,6 @@ const Login: React.FC<Props> = (props) => {
         <div className="card-body">
           <form onSubmit={handleSubmit(onSubmit)}>
             <p className="login-box-msg">Sign in to start your session</p>
-
             <InputField
               label="Username"
               type="text"

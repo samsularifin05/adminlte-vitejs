@@ -2,6 +2,7 @@
   "name": "pas-fe",
   "private": true,
   "version": "0.0.0",
+  "homepage": ".",
   "scripts": {
     "start": "yarn run dev --host",
     "dev": "rimraf dev-dist && DEBUG=vite-plugin-pwa:* SW_DEV=true vite --force",

@@ -64,21 +64,11 @@ function Header() {
                 onClick={() => logout()}
               >
                 <i className="nav-icon fas fa-arrow-right-from-bracket"></i>{" "}
-                Logout kau
+                Logout
               </button>
             </div>
           </div>
         </li>
-        {/* <li className="nav-item">
-          <Link
-            className="nav-link"
-            data-widget="fullscreen"
-            to="#"
-            role="button"
-          >
-            <i className="fas fa-expand-arrows-alt"></i>
-          </Link>
-        </li> */}
       </ul>
     </nav>
   );
