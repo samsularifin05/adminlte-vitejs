@@ -5,7 +5,7 @@
   "scripts": {
     "start": "yarn run dev --host",
     "dev": "rimraf dev-dist && DEBUG=vite-plugin-pwa:* SW_DEV=true vite --force",
-    "build": "tsc && cross-env DEBUG=vite-plugin-pwa:* SW_DEV=false BASE_URL=/ vite build",
+    "build": "tsc && cross-env DEBUG=vite-plugin-pwa:* SW_DEV=false BASE_URL=/ vite build && cp .htaccess ./build/",
     "preview": "vite preview",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint src --ext .js,.jsx,.ts,.tsx --fix",
