@@ -1,6 +1,8 @@
-import Content from './Content';
-import Footer from './Footer';
-import Header from './Header';
-import Sidebar from './sideBar';
-// import Sidebar from "./Sidebar"
+import { lazy } from "react";
+
+const Content = lazy(() => import("./Content"));
+const Footer = lazy(() => import("./Footer"));
+const Header = lazy(() => import("./Header"));
+const Sidebar = lazy(() => import("./sideBar"));
+
 export { Content, Sidebar, Footer, Header };
