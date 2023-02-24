@@ -14,7 +14,7 @@
     "compile": "tsc",
     "test": "jest",
     "commit": "cz",
-    "purgecss": "node ./purgecss.js",
+    "purgecss": "node ./script/purgecss.js",
     "obfuscate": "node ./script/obfuscate.js"
   },
   "config": {

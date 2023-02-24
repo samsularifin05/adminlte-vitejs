@@ -652,7 +652,7 @@ pre code {
   padding-right: 0;
   padding-left: 0;
 }
-
+/* purgecss start ignore */
 .col-1,
 .col-2,
 .col-3,
@@ -736,6 +736,7 @@ pre code {
   flex-grow: 1;
   max-width: 100%;
 }
+/* purgecss end ignore */
 
 .row-cols-1 > * {
   -ms-flex: 0 0 100%;
@@ -2694,7 +2695,7 @@ textarea.form-control.is-invalid {
     margin-bottom: 0;
   }
 }
-
+/* purgecss start ignore */
 .btn {
   display: inline-block;
   font-weight: 400;
@@ -2714,6 +2715,7 @@ textarea.form-control.is-invalid {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+/* purgecss end ignore */
 
 @media (prefers-reduced-motion: reduce) {
   .btn {
@@ -2752,13 +2754,16 @@ fieldset:disabled a.btn {
   pointer-events: none;
 }
 
+/* purgecss start ignore */
 .btn-primary {
   color: #fff;
   background-color: #007bff;
   border-color: #007bff;
   box-shadow: none;
 }
+/* purgecss end ignore */
 
+/* purgecss start ignore */
 .btn-primary:hover {
   color: #fff;
   background-color: #0069d9;
@@ -3428,7 +3433,7 @@ input[type="reset"].btn-block,
 input[type="button"].btn-block {
   width: 100%;
 }
-
+/* purgecss end ignore */
 .fade {
   transition: opacity 0.15s linear;
 }

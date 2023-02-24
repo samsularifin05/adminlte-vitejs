@@ -13,8 +13,7 @@ function Sidebar() {
       </Link>
       <div className="sidebar">
         <nav className="mt-2">
-          <ul
-            className="nav nav-pills nav-sidebar flex-column"
+          <ul className="nav nav-pills nav-sidebar flex-column"
             data-widget="treeview"
             data-accordion="false"
           >

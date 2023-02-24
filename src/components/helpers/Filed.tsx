@@ -45,8 +45,7 @@ function Input(props: IFieldProps, ref: any) {
           <div className="input-group-append">
             <span
               style={{cursor : "pointer"}}
-              onClick={props.btnAction}
-              className="input-group-text"
+              onClick={props.btnAction} className="input-group-text"
             >
               <span className={props.iconFormGroup} />
             </span>

@@ -59,8 +59,7 @@ export const calculateWindowSize = (windowWidth: number) => {
 export const LoadingApp = () =>{
   return (
     <div className="preloader flex-column justify-content-center align-items-center">
-        <img
-          className="animation__shake"
+        <img className="animation__shake"
           src={Logo}
           alt="AdminLTELogo"
           height="60"

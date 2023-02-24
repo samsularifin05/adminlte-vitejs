@@ -52,8 +52,7 @@ const SidebarNavList: React.FC<props> = (props) => {
           <li className={`nav-item${isMenuExtended ? " menu-open" : ""}`}>
             {props.data.children ? (
               <Link
-                to={props.data.path}
-                className="nav-link"
+                to={props.data.path} className="nav-link"
                 onClick={handleMainMenuAction}
                 style={{ cursor: "pointer" }}
               >
@@ -61,8 +60,7 @@ const SidebarNavList: React.FC<props> = (props) => {
               </Link>
             ) : props.data.navheader !== true ? (
               <Link
-                to={props.data.path}
-                className="nav-link"
+                to={props.data.path} className="nav-link"
                 onClick={handleMainMenuAction}
                 style={{ cursor: "pointer" }}
               >
