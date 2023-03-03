@@ -1,5 +1,10 @@
 import { Suspense, useEffect } from "react";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import {
+  RecoilEnv,
+  useRecoilState,
+  useRecoilValue,
+  useSetRecoilState
+} from "recoil";
 import {
   Content,
   Footer,
@@ -59,7 +64,7 @@ function App() {
       addWindowClass("sidebar-collapse");
     }
   }, [windowSize, sidebar]);
-
+  RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
   return (
     <Suspense fallback={<LoadingApp />}>
       <div className="wrapper">
