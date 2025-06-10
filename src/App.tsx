@@ -3,7 +3,7 @@ import {
   RecoilEnv,
   useRecoilState,
   useRecoilValue,
-  useSetRecoilState
+  useSetRecoilState,
 } from "recoil";
 import {
   Content,
@@ -17,13 +17,13 @@ import {
   calculateWindowSize,
   LoadingApp,
   removeWindowClass,
-  useWindowSize
+  useWindowSize,
 } from "./components";
 import {
   isLoading,
   screenSize,
   themesSetting,
-  toggleSidebarMenu
+  toggleSidebarMenu,
 } from "./recoil";
 import { Redirect } from "react-router-dom";
 import "./assets/css/index.css";
@@ -39,7 +39,7 @@ function App() {
 
   const handleToggleMenuSidebar = () => {
     setHideSidebar({
-      menuSidebarCollapsed: !valueHideSidebar.menuSidebarCollapsed
+      menuSidebarCollapsed: !valueHideSidebar.menuSidebarCollapsed,
     });
   };
 

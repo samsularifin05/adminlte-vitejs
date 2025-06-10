@@ -1,5 +1,5 @@
 import react from "@vitejs/plugin-react-swc";
-import { defineConfig, splitVendorChunkPlugin } from "vite";
+import { defineConfig } from "vite";
 import { ManifestOptions, VitePWA, VitePWAOptions } from "vite-plugin-pwa";
 import svgrPlugin from "vite-plugin-svgr";
 import htmlMinifier from "vite-plugin-html-minifier";
@@ -12,12 +12,12 @@ const getCache = ({ name, pattern }: any) => ({
     cacheName: name,
     expiration: {
       maxEntries: 500,
-      maxAgeSeconds: 60 * 60 * 24 * 365 * 2 // 2 years
+      maxAgeSeconds: 60 * 60 * 24 * 365 * 2, // 2 years
     },
     cacheableResponse: {
-      statuses: [200]
-    }
-  }
+      statuses: [200],
+    },
+  },
 });
 const pwaOptions: Partial<VitePWAOptions> = {
   mode: "production",
@@ -32,13 +32,13 @@ const pwaOptions: Partial<VitePWAOptions> = {
     runtimeCaching: [
       getCache({
         pattern: /^https:\/\/adminlte-vite-js.netlify.app\/assets/,
-        name: "local-images1"
+        name: "local-images1",
       }),
       getCache({
         pattern: /^https:\/\/adminlte-vite-js.netlify.app\/assets\/css/,
-        name: "local-css"
-      })
-    ]
+        name: "local-css",
+      }),
+    ],
   },
   manifest: {
     name: "Admin Lte",
@@ -48,28 +48,28 @@ const pwaOptions: Partial<VitePWAOptions> = {
       {
         src: "icons/pwa-192x192.png", // <== don't add slash, for testing
         sizes: "192x192",
-        type: "image/png"
+        type: "image/png",
       },
       {
         src: "icons/pwa-512x512.png", // <== don't remove slash, for testing
         sizes: "512x512",
-        type: "image/png"
+        type: "image/png",
       },
       {
         src: "icons/pwa-512x512.png", // <== don't add slash, for testing
         sizes: "512x512",
         type: "image/png",
-        purpose: "any maskable"
-      }
-    ]
+        purpose: "any maskable",
+      },
+    ],
   },
 
   devOptions: {
     enabled: process.env.SW_DEV === "true",
     /* when using generateSW the PWA plugin will switch to classic */
     type: "module",
-    navigateFallback: "index.html"
-  }
+    navigateFallback: "index.html",
+  },
 };
 
 const replaceOptions = { __DATE__: new Date().toISOString() };
@@ -99,23 +99,22 @@ export default defineConfig(({ command, mode }) => {
     plugins: [
       react(),
       VitePWA(pwaOptions),
-      splitVendorChunkPlugin(),
       htmlMinifier({
-        minify: true
+        minify: true,
       }),
       svgrPlugin({
         svgrOptions: {
-          icon: true
-        }
+          icon: true,
+        },
       }),
-      viteCompression()
+      viteCompression(),
     ],
     resolve: {
       alias: [
         { find: "@/", replacement: "/src" },
         { find: "@/Assets", replacement: "/src/assets" },
-        { find: "@/Components", replacement: "/src/components" }
-      ]
+        { find: "@/Components", replacement: "/src/components" },
+      ],
     },
     build: {
       emptyOutDir: true,
@@ -138,9 +137,9 @@ export default defineConfig(({ command, mode }) => {
               return "assets/css/[hash][extname]";
             }
             return "assets/[hash][extname]";
-          }
-        }
-      }
-    }
+          },
+        },
+      },
+    },
   };
 });
